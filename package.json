@@ -8,6 +8,8 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
+    "test:coverage": "nyc --all --include src/models --include src/services --include src/controllers mocha tests/unit/**/*.js --exit",
+    "dev": "nodemon src/server.js",
     "test": "jest --config ./jest.config.js --runInBand --detectOpenHandles",
     "test:mocha": "nyc --all --include src/models --include src/services --include src/controllers mocha tests/unit/**/*.js --exit",
     "start": "node src/server.js",
