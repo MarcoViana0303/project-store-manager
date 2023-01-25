@@ -32,8 +32,23 @@ const createProduct = async (name) => {
   return { type: 'INVALID_VALUE', message: '"name" length must be at least 5 characters long' };
 };
 
+const updateProduct = async (name, id) => {
+  const error = schemaName.validationNewProduct(name);
+  if (error.type) {
+    return error;
+  }
+  const updateById = await productModels.findProductById(id);
+  if (!updateById) {
+    return { type: 404, message: 'Product not found' };
+  }
+  await productModels.update(name, id);
+
+  return { type: null, message: { id, name } };
+};
+
 module.exports = {
   findAllProducts,
   findProductById,
   createProduct,
+  updateProduct,
 };
