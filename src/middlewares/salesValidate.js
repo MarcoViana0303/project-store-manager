@@ -1,19 +1,26 @@
-// const validateSales = async (req, res, next) => {
-//   const { productId, quantity } = req.body;
+const validateSales = async (req, res, next) => {
+  const sales = req.body;
 
-//   if (!productId) {
-//     return res.status(400).json({ message: '"productId" is required' });
-//   }
+  const salesId = sales.map((product) => product.productId);
 
-//   // if (!quantity) {
-//   //   return res.status(400).json({ message: '"quantity" is required' });
-//   // }
+  const quantity = sales.map((product) => product.quantity);
 
-//   // if (quantity <= 0) {
-//   //   return res.status(422).json({ "message": "\"quantity\" must be greater than or equal to 1" });
-//   // }
+  const salesDoesExist = salesId.some((id) => id === undefined);
 
-//   next();
-// };
+  const quantityDoesExist = quantity.some((quantity) => quantity === undefined);
 
-// module.exports = validateSales;
+  if (salesDoesExist) return res.status(400).json({ message: '"productId" is required' });
+  if (quantityDoesExist) return res.status(400).json({ message: '"quantity" is required' });
+
+  // if (!quantity) {
+  //   return res.status(400).json({ message: '"quantity" is required' });
+  // }
+
+  // if (quantity <= 0) {
+  //   return res.status(422).json({ "message": "\"quantity\" must be greater than or equal to 1" });
+  // }
+
+  next();
+};
+
+module.exports = validateSales;

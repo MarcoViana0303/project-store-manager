@@ -40,7 +40,7 @@ describe('Testando a camada services', function () {
       // Arrange
       sinon.stub(productsModels, 'findProductById').resolves(productsMock.productById);
       // Act
-      const result = await productsServices.findProductById(1);
+      const result = await productsServices.findProductById(productId);
       // Assert
       expect(result).to.have.been.calledWithExactly(productsMock.productById);
 

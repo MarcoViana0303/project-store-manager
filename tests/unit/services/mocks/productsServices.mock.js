@@ -21,4 +21,7 @@ const productById = {
 module.exports = {
   productsMock,
   productById,
-}
+  PRODUCT_NOT_FOUND,
+  MESSAGE_ERROR,
+  PRODUCT_ID_ERROR,
+};

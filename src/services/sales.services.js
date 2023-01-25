@@ -1,17 +1,20 @@
-// const findSaleById = async (id) => {
-//   const result = await productModels.findProductById(id);
+const saleModels = require('../models/sales.models');
 
-//   if (!result) {
-//     return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
-//   }
-//   return { type: null, message: result };
-// };
+const findAllSales = async () => {
+  const result = await saleModels.findAllSales();
+  return { type: null, message: result };
+}
 
-// const createSale = async (date) => {
-//   const newSale = await productModels.insertSale(date);
+const findSaleById = async (id) => {
+  const result = await saleModels.findSaleById(id);
 
-//   const sale = await productModels.findSaleById(newSale);
-//   if (sale) {
-//     return { type: null, message: sale };
-//   }
-// };
+  if (!result) {
+    return { type: 404, message: "Sale not found" };
+  }
+  return { type: null, message: result }
+};
+
+module.exports = {
+  findAllSales,
+  findSaleById,
+}

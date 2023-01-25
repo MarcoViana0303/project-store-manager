@@ -1,20 +1,24 @@
-// const findSaleById = async (req, res) => {
-//   const { id } = req.params;
+const saleServices = require('../services/sales.services');
 
-//   const { type, message } = await productServices.findSaleById(id);
+const findAllSales = async (_req, res) => {
+  const { message } = await saleServices.findAllSales();
 
-//   if (type) {
-//     return res.status(errorMap.mapError(type)).json({ message });
-//   }
+  res.status(200).json(message);
+};
 
-//   res.status(200).json(message);
-// };
+const findSaleById = async (req, res) => {
+  const { id } = req.params;
 
-// const createSale = async (req, res) => {
-//   const { type, message } = await productServices.createSale(req.body);
+  const { type, message } = await saleServices.findSaleById(id);
 
-//   if (type) {
-//     return res.status(400).json(message);
-//   }
-//   return res.status(201).json(message);
-// };
+  if (type) {
+    return res.status(404).json({ message });
+  };
+
+   res.status(200).json(message);
+};
+
+module.exports = {
+  findAllSales,
+  findSaleById,
+};
