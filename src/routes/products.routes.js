@@ -9,5 +9,6 @@ router.get('/:id', productControllers.findProductById);
 router.post('/', nameValidate.validateName, productControllers.createProduct);
 
 router.put('/:id', nameValidate.validateName, productControllers.updateById);
+router.delete('/:id', productControllers.deleteById);
 
 module.exports = router;
