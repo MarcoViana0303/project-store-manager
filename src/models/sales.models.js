@@ -10,7 +10,6 @@
 //   return insertId;
 // };
 
-
 // const findSaleById = async (id) => {
 //   const [[result]] = await connection.execute(
 //     'SELECT * FROM StoreManager.sales WHERE id = ?', [id]

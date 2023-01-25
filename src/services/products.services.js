@@ -1,7 +1,6 @@
 const productModels = require('../models/products.models');
-//const Joi = require('joi');
+// const Joi = require('joi');
 const schemaName = require('./validations/validationsInputValues');
-
 
 const findAllProducts = async () => {
   const result = await productModels.findAllProducts();
@@ -19,8 +18,7 @@ const findProductById = async (id) => {
 };
 
 const createProduct = async (name) => {
-
-  const error = schemaName.validationNewProduct(name)
+  const error = schemaName.validationNewProduct(name);
   if (error.type) {
     return error;
   }
@@ -30,7 +28,7 @@ const createProduct = async (name) => {
   // const product = await productModels.findProductById(newProduct);
   if (newProduct) {
     return { type: null, message: newProduct };
-  };
+  }
   return { type: 'INVALID_VALUE', message: '"name" length must be at least 5 characters long' };
 };
 

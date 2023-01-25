@@ -27,11 +27,9 @@ const createProduct = async (req, res) => {
 
   if (type) {
     return res.status(422).json({ message });
-  };
+  }
   return res.status(201).json(message);
 };
-
-
 
 module.exports = {
   findAllProducts,
