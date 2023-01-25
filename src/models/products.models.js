@@ -33,7 +33,7 @@ const update = async (name, id) => {
 
 const deleted = async ({ id }) => {
   const [result] = await connection.execute(
-    'DELETE FROM products WHERE id = ?', [id]
+    'DELETE FROM products WHERE id = ?', [id],
   );
   return result;
 };

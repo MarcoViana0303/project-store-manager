@@ -51,11 +51,9 @@ const deleteById = async ({ id }) => {
 
   if (product.affectedRows === 0) {
     return { type: 404, message: 'Product not found' };
-  };
+  }
   return { type: null, message: '' };
 };
-
-
 
 module.exports = {
   findAllProducts,
