@@ -3,11 +3,11 @@ const validateSales = async (req, res, next) => {
 
   const salesId = sales.map((product) => product.productId);
 
-  const quantity = sales.map((product) => product.quantity);
+  const isQuantity = sales.map((product) => product.quantity);
 
   const salesDoesExist = salesId.some((id) => id === undefined);
 
-  const quantityDoesExist = quantity.some((quantity) => quantity === undefined);
+  const quantityDoesExist = isQuantity.some((quantity) => quantity === undefined);
 
   if (salesDoesExist) return res.status(400).json({ message: '"productId" is required' });
   if (quantityDoesExist) return res.status(400).json({ message: '"quantity" is required' });
