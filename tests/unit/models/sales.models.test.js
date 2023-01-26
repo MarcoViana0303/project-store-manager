@@ -14,20 +14,70 @@ describe('Testando a camada model da Sales', function () {
 
     it('Listando todos os sales', async function () {
       // Arrange
-      sinon.stub(connection, 'execute').resolves([salesMock.salesMock]);
+      sinon.stub(connection, 'execute').resolves([[
+        {
+          sale_id: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          product_id: 1,
+          quantity: 5,
+        },
+        {
+          sale_id: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          product_id: 2,
+          quantity: 10,
+        },
+      ]]);
       // Act 
       const result = await salesModels.findAllSales();
       // Assert
-      expect(result).to.be.deep.equal([salesMock.salesMock]);
+      expect(result).to.be.deep.equal([
+        {
+          saleId: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          productId: 1,
+          quantity: 5,
+        },
+        {
+          saleId: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          productId: 2,
+          quantity: 10,
+        },
+      ]);
     });
 
     it('Listando um sale específico', async function () {
       // Arrange
-      sinon.stub(connection, 'execute').resolves([[salesMock.salesMock[2]]]);
+      sinon.stub(connection, 'execute').resolves([[
+        {
+          sale_id: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          product_id: 1,
+          quantity: 5,
+        },
+        {
+          sale_id: 1,
+          date: '2023-01-14T12:25:35.000Z',
+          product_id: 2,
+          quantity: 10,
+        },
+      ]]);
       // Act
-      const result = await salesModels.findSaleById(3);
+      const result = await salesModels.findSaleById(1);
       // Assert
-      expect(result).to.be.deep.equal(salesMock.salesMock[2]);
+      expect(result).to.deep.equal([
+        {
+          date: '2023-01-14T12:25:35.000Z',
+          productId: 1,
+          quantity: 5,
+        },
+        {
+          date: '2023-01-14T12:25:35.000Z',
+          productId: 2,
+          quantity: 10,
+        },
+      ]);
     });
 
   });
