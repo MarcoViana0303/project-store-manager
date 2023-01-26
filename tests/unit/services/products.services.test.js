@@ -1,13 +1,15 @@
 const sinon = require('sinon');
 const validateInput = require('../../../src/middlewares/nameValidate')
-
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
+chai.use(sinonChai);
 const { productsMock, returnGetById, productById } = require('./mocks/productsServices.mock');
 const productsModels = require('../../../src/models/products.models');
 const productsServices = require('../../../src/services/products.services');
 const { expect } = require('chai');
 
 describe('Testando a camada services', function () {
-   
+
   it('Testando a rota /products', async function () {
     // Arrange
     sinon.stub(productsModels, 'findAllProducts').resolves(productsMock);
@@ -40,42 +42,51 @@ describe('Testando a camada services', function () {
     expect(result).to.deep.equal(returnGetById);
 
   });
+
 // Faltando ajustar
   it('Criando produto com sucesso', async function () {
 
-    sinon.stub(productsModels, 'insert').resolves(1);
+    sinon.stub(productsModels, 'insert').resolves(productById);
 
-    sinon.stub(productsModels, 'findProductById').resolves(productById);
 
-    const result = await productsServices.createProduct({ name: 'panco'});
+    const { type, message } = await productsServices.createProduct("ProdutoX");
 
     
-
-    expect(result).to.deep.equal({
-      type: null,
-      message: productById,
-    });
+    expect(type).to.be.equal(null);
+    expect(message).to.be.deep.equal(productById);
+   
    
   });
 
-// Faltando ajustar
-  it('Criando produto com fracasso', async function () {
+  it('Criando pr com sucesso', async function () {
+
+    const { type, message} = await productsServices.createProduct("abc");
+
+
+    expect(type).to.be.equal('INVALID_VALUE');
+    expect(message).to.be.deep.equal('"name" length must be at least 5 characters long');
+
+
+  });
   
 
-    sinon.stub(productsModels, 'insert').resolves(1);
-    sinon.stub(productsModels, 'findProductById').resolves(productById);
+// // Faltando ajustar
+  // it('Criando produto com fracasso', async function () {
+  
+  //   // sinon.stub(productsModels, 'insert').resolves(1);
+  //   // sinon.stub(productsModels, 'findProductById').resolves(productById);
 
-    sinon.stub(validateInput, 'validateName').resolves({
-      type: 422,
-      message: '"name" length must be at least 5 characters long',
-    })
+  //   // sinon.stub(validateInput, 'validateName').resolves({
+  //   //   type: 422,
+  //   //   message: '"name" length must be at least 5 characters long',
+  //   // })
 
-    const result = await productsServices.createProduct({ name: 'pan' });
-   
+  //   const result = await productsServices.createProduct("pan");
+  //   expect(result.)
 
     // expect(res.status).calledWith(422);
-    expect(result).to.deep.equal({ type: 422, message: '"name" length must be at least 5 characters long' });
-  });
+    // expect(result).to.deep.equal({ type: 422, message: '"name" length must be at least 5 characters long' });
+  // });
 
 
 

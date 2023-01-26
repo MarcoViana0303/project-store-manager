@@ -1,7 +1,8 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-// const sinonChai = require('sinon-chai');
-// chai.use(sinonChai);
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
+chai.use(sinonChai);
 
 const connection = require('../../../src/models/connection');
 const productModels = require('../../../src/models/products.models');
@@ -10,10 +11,6 @@ const productsMock = require('./mocks/productsModels.mock');
 
 describe('Testando a camada model', function () {
   describe('Testes para o requisito 2', function () {
-
-    afterEach(() => {
-      sinon.restore();
-    })
 
     it('Listando todos os produtos', async function () {
       // Arrange
@@ -35,5 +32,5 @@ describe('Testando a camada model', function () {
     
   });
 
-  
+  afterEach(sinon.restore)
 });

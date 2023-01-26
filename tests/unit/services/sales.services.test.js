@@ -1,5 +1,7 @@
 const sinon = require('sinon');
-
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
+chai.use(sinonChai);
 const { returnGetById, salesById, returnSales } = require('./mocks/salesServices.mock');
 const salesModels = require('../../../src/models/sales.models');
 const salesServices = require('../../../src/services/sales.services');
