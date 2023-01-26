@@ -18,10 +18,13 @@ const productById = {
   name: 'Martelo de Thor',
 };
 
+const returnGetById = {
+  type: null,
+  message: productById,
+};
+
 module.exports = {
   productsMock,
   productById,
-  PRODUCT_NOT_FOUND,
-  MESSAGE_ERROR,
-  PRODUCT_ID_ERROR,
+  returnGetById,
 };

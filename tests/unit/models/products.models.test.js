@@ -8,15 +8,20 @@ const productModels = require('../../../src/models/products.models');
 
 const productsMock = require('./mocks/productsModels.mock');
 
-describe('Implementando testes para /products e /products/:id', function () {
+describe('Testando a camada model', function () {
   describe('Testes para o requisito 2', function () {
+
+    afterEach(() => {
+      sinon.restore();
+    })
+
     it('Listando todos os produtos', async function () {
       // Arrange
-      sinon.stub(connection, 'execute').resolves([productsMock.productsMock]);
+      sinon.stub(connection, 'execute').resolves([productsMock]);
       // Act 
       const result = await productModels.findAllProducts();
       // Assert
-      expect(result).to.be.deep.equal(productsMock.productsMock);
+      expect(result).to.be.deep.equal(productsMock);
     });
 
     it('Listando um produto específico', async function () {
@@ -30,6 +35,5 @@ describe('Implementando testes para /products e /products/:id', function () {
     
   });
 
-  afterEach(sinon.restore);
   
 });
