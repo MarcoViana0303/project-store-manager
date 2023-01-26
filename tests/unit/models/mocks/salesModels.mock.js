@@ -32,5 +32,4 @@ module.exports = {
   salesMock,
   salesMockId,
   createSale,
-  returnGetById,
 }
