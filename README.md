@@ -7,6 +7,25 @@
 A API construída é um sistema de gerenciamento de vendas no formato dropshipping em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Utilizei o banco de dados MySQL para a gestão de dados. Além disso, a API é RESTful.
 </h4>
 
+<hr />
+
+<details>
+  <summary><strong>:rocket: Tecnologias usadas</strong></summary>
+  <br />
+  
+-  MySQL
+-  MySQL Workbench
+-  Express
+-  TDD usando Mocha, Chai, Sinon.
+-  Docker
+-  ESLint
+-  Git
+-  VS Code
+  
+  </details>
+  
+  <br />
+
 ## Instalando Dependências
 ### Com Docker
 > Backend
