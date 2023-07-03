@@ -1,13 +1,64 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+## Instalando Dependências
+### Com Docker
+> Backend
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+* Suba os containeres: 
+```bash
+docker-compose up -d
+``` 
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+* Em seguida abra o terminal interativo do container: 
+```bash
+docker exec -it store_manager bash
+``` 
+
+* Instale as dependências dentro do container: 
+```bash
+npm install
+```
+> Para rodar a API 
+
+* Rode o seguinte comando dentro do container: 
+```bash
+npm run debug
+```
+> Testes
+
+* Dentro do terminal do container:
+```bash
+npm test
+``` 
+* Para rodar os testes unitários: 
+```bash
+npm run test:mocha
+```
+
+### Sem Docker
+
+* Instale as dependências [Caso existam]
+```bash
+npm install
+``` 
+
+* Execute a aplicação com 
+```bash
+npm start
+```
+
+Ou: 
+
+```bash
+npm run debug
+```
+
+> Testes
+
+* Rode o comando:
+```bash
+npm test
+``` 
+
+* Para rodar os testes unitários:
+```bash
+npm run test:mocha
+```
