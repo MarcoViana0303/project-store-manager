@@ -1,3 +1,12 @@
+<h4 align="center">
+  <br /><br />
+  <img alt="CRUD" src="./crud.png" />
+  <br /><br />
+  Esta é a primeira API que eu desenvolvi utilizando a arquitetura MSC (model-service-controller)!
+
+A API construída é um sistema de gerenciamento de vendas no formato dropshipping em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Utilizei o banco de dados MySQL para a gestão de dados. Além disso, a API é RESTful.
+</h4>
+
 ## Instalando Dependências
 ### Com Docker
 > Backend
