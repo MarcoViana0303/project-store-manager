@@ -26,6 +26,24 @@ A API construída é um sistema de gerenciamento de vendas no formato dropshippi
   
   <br />
 
+  Para rodar a aplicação, irá precisar de: [Git](https://git-scm.com), [VS Code](https://code.visualstudio.com/), [Node.js](https://nodejs.org/) e [NPM](https://www.npmjs.com/).
+
+<br />
+
+Clone o projeto
+
+```bash
+  git clone git@github.com:MarcoViana0303/project-store-manager.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd project-talker-manager
+```
+
+<br /> 
+
 ## Instalando Dependências
 ### Com Docker
 > Backend
