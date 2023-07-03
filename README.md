@@ -39,7 +39,7 @@ Clone o projeto
 Entre no diretório do projeto
 
 ```bash
-  cd project-talker-manager
+  cd project-store-manager
 ```
 
 <br /> 
